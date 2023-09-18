@@ -6,6 +6,7 @@ use App\Models\Status;
 use App\Models\Task;
 use App\Models\UserTask;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TaskService
 {
@@ -16,10 +17,18 @@ class TaskService
      */
     public function index()
     {
-        $getTasks = Task::orderBy("id", "DESC")->get();
 
+
+        $user = Auth::user();
+        $allowedDepartments = ["Laboratory", "Radiology", "Optical"];
+        if ($user && in_array($user->role, $allowedDepartments)) {
+        $getTasks = Task::where('department', $user->role)
+            ->orderBy("id", "DESC")
+            ->get();
+        } else {
+            $getTasks = Task::orderBy("id", "DESC")->get();
+        }
         $tasks = [];
-
         foreach ($getTasks as $task) {
             array_push($tasks, $this->structure($task));
         }

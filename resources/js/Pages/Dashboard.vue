@@ -60,15 +60,19 @@
                                     </div>
                                     <div>
                                         <h1 class="text-yellow-500">Checked in</h1>
-                                        <p class="text-yellow-500">{{ tasks.pending?.total }}</p>
+                                        <p class="text-yellow-500">{{ tasks.checkin }}</p>
                                     </div>
                                     <div>
                                         <h1 class="text-green-500">Treatment</h1>
-                                        <p class="text-green-500">{{ tasks.ongoing?.total }}</p>
+                                        <p class="text-green-500">{{ tasks.treatment }}</p>
                                     </div>
                                     <div>
                                         <h1 class="text-blue-500">Referred</h1>
-                                        <p class="text-blue-500">{{ tasks.done?.total }}</p>
+                                        <p class="text-blue-500">{{ tasks.referrals }}</p>
+                                    </div>
+                                    <div>
+                                            <h1 class="text-blue-500">Checked Out</h1>
+                                            <p class="text-blue-500">{{ tasks.checkout }}</p>
                                     </div>
                                 </div>
                             </div>

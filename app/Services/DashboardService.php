@@ -16,6 +16,24 @@ class DashboardService
         return Task::all()->count();
     }
 
+    public function getCheckinTasks()
+    {
+        return Task::where('status', 'Check-in')->count();
+    }
+
+    public function getTreatmentTasks()
+    {
+        return Task::where('status', 'Treatment')->count();
+    }
+    public function getReferralTasks()
+    {
+        return Task::where('status', 'Referral')->count();
+    }
+
+    public function getCheckOutTasks()
+    {
+        return Task::where('status', 'Check-out')->count();
+    }
     /*
      * Fetch Tasks by Status */
 

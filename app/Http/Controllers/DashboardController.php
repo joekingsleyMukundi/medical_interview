@@ -15,6 +15,10 @@ class DashboardController extends Controller
         // Fetch Data
         return response([
             "tasks" => $service->getTasks(),
+            "checkin" => $service->getCheckinTasks(),
+            "treatment" => $service->getTreatmentTasks(),
+            "referrals" => $service->getReferralTasks(),
+            "checkout" => $service->getCheckOutTasks()
         ], 200);
     }
 
