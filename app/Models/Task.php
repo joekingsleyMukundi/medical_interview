@@ -21,7 +21,8 @@ class Task extends Model
         'name',
         'description',
         'due_date',
-        'department', // Add 'department' here
+        'department',
+        'status'// Add 'department' here
     ];
 
     protected function dueDate(): Attribute

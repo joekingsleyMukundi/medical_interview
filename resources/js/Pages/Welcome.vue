@@ -79,9 +79,8 @@
                         <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Dashboard</h2>
 
                         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                            This Solutech Code Challenge project has a dashboard that reports on the app's
-                            statistics such as Task data including pending tasks, ongoing tasks and done tasks. It
-                            also reports on the users and how many have a task.
+                            This Medical app Code Challenge project has a dashboard that reports on the app's
+                            statistics such as patient information
                         </p>
                     </div>
 
@@ -111,10 +110,10 @@
                             </svg>
                         </div>
 
-                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Tasks</h2>
+                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Patients</h2>
 
                         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                            This Solutech Code Challenge project has a tasks page that lists all available tasks showing
+                            This Medical Code Challenge project has a patiets page that lists all available patients showing
                             the title description status and time created.
                         </p>
                     </div>

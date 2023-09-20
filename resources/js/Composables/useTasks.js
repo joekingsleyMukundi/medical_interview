@@ -26,6 +26,7 @@ export default function useTasks() {
     /*
      * Create Task */
     const onCreateTask = async (name, description, dueDate, selectedDepartment, status) => {
+
         try {
             const res = await Axios.post("/api/tasks", {
                 name: name,
@@ -35,6 +36,7 @@ export default function useTasks() {
                 status: status
             });
             console.log(selectedDepartment);
+            console.log(status);
             messages.value = [res.data];
 
             // Redirect
@@ -58,14 +60,14 @@ export default function useTasks() {
         console.log({name: task.value.name,
                 description: task.value.description,
                 department: task.value.department,
-                status: task.value.category,});
+                status: task.value.status,});
         try {
             let res = await Axios.post(`/api/tasks/${taskId}`, {
                 _method: "PUT",
                 name: task.value.name,
                 description: task.value.description,
                 department: task.value.department,
-                status: task.value.category,
+                status: task.value.status,
             });
 
             messages.value = [res.data];

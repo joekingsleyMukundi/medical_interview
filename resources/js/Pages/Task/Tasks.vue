@@ -1,4 +1,7 @@
 <script setup>
+    //import * as XLSX from 'xlsx';
+    //import * as XLSX from 'xlsx-style';
+    import ExcelJS from 'exceljs';
     import {
         Head,
         Link
@@ -19,6 +22,51 @@
 
     onMounted(getTasks)
 
+    // Function to download the page
+// Function to download the entire page
+    const downloadExcel = async () => {
+    const fileName = "tasks.xlsx"; // Change the filename as desired
+
+    // Fetch tasks data from the backend
+    try { // Change the filename as desired
+       const response = await fetch('/api/tasks'); // Replace with your actual API endpoint
+        const tasksData = await response.json();
+
+        // Create a new workbook
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Tasks');
+
+        // Add the tasks data to the worksheet
+        worksheet.columns = [
+            { header: 'name', key: 'name', width: 35 },
+            { header: 'description', key: 'description', width: 35 },
+            { header: 'due_date', key: 'due_date', width: 35 },
+            { header: 'department', key: 'department', width: 35 },
+            { header: 'status', key: 'status', width: 35 },
+        ];
+
+        tasksData.forEach(task => {
+            worksheet.addRow(task);
+        });
+
+        // Create a blob from the workbook
+        const buffer = await workbook.xlsx.writeBuffer();
+        const excelBlob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+        // Create a download link
+        const url = window.URL.createObjectURL(excelBlob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = fileName;
+
+        // Trigger the download
+        a.click();
+    } catch (error) {
+        console.log(error);
+    }
+
+};
 </script>
 
 <template>
@@ -37,6 +85,7 @@
                 <Link href="/tasks/create">
                 <PrimaryButton class="ml-4 hover:opacity-25">Check in patient</PrimaryButton>
                 </Link>
+                <button @click="downloadExcel" class="ml-4 hover:opacity-25">Download Excel</button>
 
                 <div class="mt-16">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
